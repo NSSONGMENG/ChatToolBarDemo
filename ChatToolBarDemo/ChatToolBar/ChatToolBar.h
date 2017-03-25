@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 @class ChatToolBar;
+@class ChatTextView;
 
-static  CGFloat KtoolBarHeight = 40;
+static  CGFloat ChatToolBarHeight = 45;
 
 /**
     继承之后就可以通过ChatToolBarDelegate这一个代理实现它所继承的所有代理的方法
@@ -26,9 +27,14 @@ static  CGFloat KtoolBarHeight = 40;
  */
 @interface ChatToolBar : UIView
 
+@property (nonatomic, readonly) ChatTextView    * inputTextView;
+
 @property (nonatomic, weak) id<ChatToolBarDelegate>delegate;
 
+- (instancetype)initWithDelegate:(id<ChatToolBarDelegate>)delegate;
 
-
+#pragma  mark  - text view 
+- (void)textDidChanged;
+- (void)resignKeyboard;
 
 @end
